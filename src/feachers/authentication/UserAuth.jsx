@@ -59,6 +59,7 @@ function UserAuth() {
           <InputField
             errors={errors}
             name="phoneNumber"
+            placeholder="PhoneNumber"
             type="text"
             value={phoneNumber}
             onChange={(v) => setPhoneNumber(v.target.value)}
@@ -69,6 +70,7 @@ function UserAuth() {
           />
           <InputField
             errors={errors}
+            placeholder="Password"
             name="password"
             type="text"
             value={password}

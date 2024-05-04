@@ -7,20 +7,22 @@ function HomeBanner() {
       sx={{
         display: "flex",
         justifyContent: "center",
+        alignItems: "center",
         gap: "20px",
-        px: "15px",
-        py: "35px",
+        maxWidth: { xs: "420px", lg: "550px" },
+        mx: "auto",
+        mt: "40px",
       }}
     >
       <Box
-        sx={{ width: { xs: "300px" , sm:"400px", md: "400px", lg: "550px" } }}
+        sx={{ width: "100%" }}
         component="img"
         src="/public/photos/blue-cover.svg"
       ></Box>
       <Box
         sx={{
-          display: { xs: "none" , md:"inline"},
-          width: { xs: "250px", md: "400px", lg: "550px" },
+          display: { xs: "none", md: "inline" },
+          width: "100%",
         }}
         component="img"
         src="/photos/darkblue-cover.svg"
