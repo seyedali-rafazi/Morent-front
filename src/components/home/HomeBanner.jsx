@@ -17,7 +17,7 @@ function HomeBanner() {
       <Box
         sx={{ width: "100%" }}
         component="img"
-        src="/public/photos/blue-cover.svg"
+        src="/photos/blue-cover.svg"
       ></Box>
       <Box
         sx={{

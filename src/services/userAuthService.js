@@ -1,7 +1,6 @@
 import http from "./httpService";
 
 export function getOtp(data) {
-  console.log(data);
   return http.post("/user/get-otp", data).then(({ data }) => data.data);
 }
 

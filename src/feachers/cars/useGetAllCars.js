@@ -9,7 +9,7 @@ export default function useGetAllCars() {
 
   const decodedSearch = decodeURIComponent(search);
   const { data, isLoading } = useQuery({
-    queryKey: ["mainFood", queryObject],
+    queryKey: ["carList", queryObject],
     queryFn: () => getAllCars(decodedSearch),
     retry: false,
   });

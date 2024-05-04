@@ -2,18 +2,18 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Box, Button, Grid, IconButton, Typography } from "@mui/material";
 import CarInformation from "./CarInformation";
 
-function CarCard({ products }) {
+function CarCard({ products , lgCount }) {
   return products.map((car) => (
-    <Grid item xs={4} sm={4} md={4} lg={3} key={car._id}>
+    <Grid item xs={12} md={6} lg={lgCount} key={car._id}>
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           gap: "10px",
           width: "100%",
-          minHeight: "280px",
           bgcolor: "primary.100",
           p: "20px",
+          minHeight: "330px",
           borderRadius: "10px",
         }}
       >

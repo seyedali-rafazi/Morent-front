@@ -17,7 +17,6 @@ function CompleteProfile() {
   } = useForm();
 
   const handelComplete = (data) => {
-    console.log(data);
     complete(data, {
       onSuccess: () => {
         navigate("/");
