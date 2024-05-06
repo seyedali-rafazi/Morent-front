@@ -9,7 +9,6 @@ import Loading from "./Loading";
 function NavbarIcon() {
   const { user, isLoading } = useUser();
   const navigate = useNavigate();
-  console.log(user);
   const handelUser = () => {
     if (user) {
       navigate("/user-profile");

@@ -6,7 +6,7 @@ function ProfileLayout({ children }) {
   return (
     <Box
       sx={{
-        bgcolor: "yellowgreen",
+        bgcolor: "#F3F8FF",
         minHeight: { xs: "calc(100vh - 64px)", md: "calc(100vh - 74px)" },
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
@@ -16,7 +16,7 @@ function ProfileLayout({ children }) {
       <Box
         sx={{
           bgcolor: "red",
-          height: { xs: "100px", md: "calc(100vh - 74px)" },
+          minheight: { xs: "100px", md: "calc(100vh - 74px)" },
           width: { xs: "100%", md: "20%" },
         }}
       >
@@ -24,9 +24,8 @@ function ProfileLayout({ children }) {
       </Box>
       <Box
         sx={{
-          bgcolor: "blue",
           width: { xs: "100%", md: "80%" },
-          height: { xs: "calc(100vh - 64px)", md: "calc(100vh - 74px)" },
+          minheight: { xs: "calc(100vh - 64px)", md: "calc(100vh - 74px)" },
         }}
       >
         <Outlet />

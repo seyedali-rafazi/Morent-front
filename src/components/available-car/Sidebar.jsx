@@ -29,7 +29,6 @@ function Sidebar() {
     setSearchParams({ offPrice: newValue });
   };
 
-  console.log(price);
 
   return (
     <Box

@@ -1,8 +1,20 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import PickCity from "./PickCity";
 import DatePickerCar from "./DatePickerCar";
+import { DemoItem } from "@mui/x-date-pickers/internals/demo";
+import { useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function Pickup({ text }) {
+  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    navigate(`/available-cars?search=${encodeURIComponent(searchInput)}`, {
+      replace: false,
+    });
+  };
+
   return (
     <Box sx={{ p: "5px", bgcolor: "primary.100" }}>
       <Box
@@ -16,11 +28,21 @@ function Pickup({ text }) {
           p: "10px",
         }}
       >
-        <PickCity />
+        {/* <PickCity /> */}
+        <DemoItem label={"Search"} sx={{ width: "100%", flexGrow: "1" }}>
+          <TextField
+            onChange={(e) => setSearchInput(e.target.value)}
+            value={searchInput}
+            id="outlined-basic"
+            label="Search"
+            variant="outlined"
+          />
+        </DemoItem>
         <DatePickerCar status={"Pick Up"} />
         <DatePickerCar status={"Drop Off"} />
         <Button
           variant="contained"
+          onClick={handleSubmit}
           sx={{
             bgcolor: "primary.600",
             top: "14px",

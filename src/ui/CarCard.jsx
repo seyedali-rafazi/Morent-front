@@ -1,10 +1,11 @@
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { Box, Button, Grid, IconButton, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import CarInformation from "./CarInformation";
+import LikeCars from "./LikeCars";
+import { useLocation } from "react-router-dom";
 
 function CarCard({ products, lgCount }) {
   return products.map((car) => (
-    <Grid item xs={12} md={6} lg={lgCount} key={car._id}>
+    <Grid item xs={12} md={6} lg={Number(lgCount)} key={car._id}>
       <Box
         sx={{
           display: "flex",
@@ -42,9 +43,7 @@ function CarCard({ products, lgCount }) {
               {car.typecars}
             </Typography>
           </Box>
-          <IconButton color="red">
-            <FavoriteBorderIcon />
-          </IconButton>
+          <LikeCars id={car._id} />
         </Box>
         <Box
           sx={{

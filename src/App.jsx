@@ -10,7 +10,7 @@ import AvailableCars from "./pages/AvailableCars";
 import UserProfile from "./pages/UserProfile";
 import UserDashboard from "./components/profile/UserDashboard";
 import UserOrder from "./components/profile/UserOrder";
-import UserFavourit from "./components/profile/UserFavourit";
+import UserFavourit from "./components/profile/userFavourit/UserFavourit";
 
 const queryClient = new QueryClient();
 
