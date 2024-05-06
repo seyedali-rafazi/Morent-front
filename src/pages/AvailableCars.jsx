@@ -1,9 +1,9 @@
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import React from "react";
 import Sidebar from "../components/available-car/Sidebar";
 import CarCard from "../ui/CarCard";
 import useGetAllCars from "../feachers/cars/useGetAllCars";
-import Pickup from "../components/home/Pickup";
+import BootemDropdown from "../components/available-car/BootemDropdown";
 
 function AvailableCars() {
   const { isLoading, products } = useGetAllCars();
@@ -24,10 +24,21 @@ function AvailableCars() {
           display: "flex",
           width: "100%",
           flexGrow: "1",
-          mt: { xs: "64px", md: "114px" },
+          mt: { xs: "84px", md: "114px" },
         }}
       >
-        <Sidebar />
+        <Box
+          sx={{
+            height: "100vh",
+            px: "25px",
+            display: { xs: "none", md: "flex" },
+            flexDirection: "column",
+            gap: "30px",
+            width: "25%",
+          }}
+        >
+          <Sidebar />
+        </Box>
         <Box
           sx={{
             width: "100%",
@@ -36,7 +47,7 @@ function AvailableCars() {
             gap: "20px",
           }}
         >
-          <Pickup text={"Pick-Up"} />
+          <BootemDropdown />
           <Grid
             container
             rowSpacing={1}

@@ -9,7 +9,7 @@ function CarInformation({ car }) {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "space-evenly",
           gap: "5px",
           alignItems: "center",
         }}

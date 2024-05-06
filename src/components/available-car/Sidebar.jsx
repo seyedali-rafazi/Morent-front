@@ -34,12 +34,11 @@ function Sidebar() {
   return (
     <Box
       sx={{
-        height: "100vh",
         px: "25px",
         display: "flex",
         flexDirection: "column",
         gap: "30px",
-        width: "25%",
+        borderRadius: "15px",
       }}
     >
       <Box>
@@ -72,6 +71,7 @@ function Sidebar() {
           CAPACITY
         </Typography>
         <Slider
+          sx={{ color: "primary.600" }}
           defaultValue={250}
           aria-label="Default"
           valueLabelDisplay="auto"

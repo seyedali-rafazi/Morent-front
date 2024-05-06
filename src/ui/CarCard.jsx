@@ -2,7 +2,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Box, Button, Grid, IconButton, Typography } from "@mui/material";
 import CarInformation from "./CarInformation";
 
-function CarCard({ products , lgCount }) {
+function CarCard({ products, lgCount }) {
   return products.map((car) => (
     <Grid item xs={12} md={6} lg={lgCount} key={car._id}>
       <Box
