@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import {
   AppBar,
   Box,
-  Button,
-  CssBaseline,
   Divider,
   Drawer,
   IconButton,
@@ -16,9 +14,6 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchInput from "./SearchInput";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import SettingsIcon from "@mui/icons-material/Settings";
 import NavbarIcon from "./NavbarIcon";
 
 const drawerWidth = 240;

@@ -23,10 +23,9 @@ function BootemDropdown() {
 
   return (
     <Box sx={{ px: "10px", display: { xs: "block", md: "none" } }}>
-      <Button variant="contained" sx={{ bgcolor: "primary.600" }}>
         {["Car Fitler"].map((anchor) => (
           <Fragment key={anchor}>
-            <Button sx={{ color: "primary.100" }} onClick={toggleDrawer(true)}>
+            <Button variant="contained" sx={{ color: "primary.100", bgcolor:"primary.600" }} onClick={toggleDrawer(true)}>
               {anchor}
             </Button>
             <Drawer
@@ -63,15 +62,14 @@ function BootemDropdown() {
                 >
                   Car Fitler
                 </Typography>
-                <IconButton>
-                  <CloseIcon onClick={toggleDrawer(false)} />
+                <IconButton onClick={toggleDrawer(false)}>
+                  <CloseIcon />
                 </IconButton>
               </Box>
               {list()}
             </Drawer>
           </Fragment>
         ))}
-      </Button>
     </Box>
   );
 }
