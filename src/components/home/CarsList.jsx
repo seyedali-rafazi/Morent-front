@@ -15,7 +15,7 @@ function CarsList() {
       >
         Recomendation Car
       </Typography>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1}}>
         <CarCard products={products} lgCount="3" />
       </Grid>
       <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>

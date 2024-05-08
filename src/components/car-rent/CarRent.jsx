@@ -1,13 +1,10 @@
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
-import Sidebar from "../components/available-car/Sidebar";
-import CarCard from "../ui/CarCard";
-import useGetAllCars from "../feachers/cars/useGetAllCars";
-import BootemDropdown from "../components/available-car/BootemDropdown";
+import SecuredPyment from "./SecuredPyment";
+import PickupInformation from "./PickupInformation";
+import CarInformation from "./CarInformation";
 
-function AvailableCars() {
-  const { isLoading, products } = useGetAllCars();
-
+function CarRent() {
   return (
     <Box
       sx={{
@@ -29,36 +26,32 @@ function AvailableCars() {
       >
         <Box
           sx={{
-            height: "100vh",
-            px: "25px",
-            display: { xs: "none", md: "flex" },
+            minHeight: { xs: "calc(100vh - 64px)", md: "calc(100vh - 74px)" },
+            px: "15px",
+            display: { xs: "none", lg: "flex" },
             flexDirection: "column",
             gap: "30px",
-            width: "25%",
+            width: "35%",
           }}
         >
-          <Sidebar />
+          <SecuredPyment />
+          <PickupInformation />
         </Box>
         <Box
           sx={{
+            minHeight: { xs: "calc(100vh - 64px)", md: "calc(100vh - 74px)" },
             width: "100%",
             display: "flex",
             flexDirection: "column",
             gap: "20px",
+            px: "15px",
           }}
         >
-          <BootemDropdown />
-          <Grid
-            container
-            rowSpacing={1}
-            columnSpacing={{ xs: 1}}
-          >
-            <CarCard products={products} lgCount={4} />
-          </Grid>
+          <CarInformation />
         </Box>
       </Box>
     </Box>
   );
 }
 
-export default AvailableCars;
+export default CarRent;
