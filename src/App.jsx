@@ -12,6 +12,7 @@ import UserDashboard from "./components/profile/UserDashboard";
 import UserOrder from "./components/profile/UserOrder";
 import UserFavourit from "./components/profile/userFavourit/UserFavourit";
 import CarRent from "./components/car-rent/CarRent";
+import UserCard from "./pages/UserCard";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/available-cars" element={<AvailableCars />} />
         <Route path="/available-cars" element={<AvailableCars />} />
         <Route path="/car-rent/:id" element={<CarRent />} />
+        <Route path="/user-card" element={<UserCard />} />
       </Routes>
     </QueryClientProvider>
   );

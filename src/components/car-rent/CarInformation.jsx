@@ -8,10 +8,10 @@ import OrderBuuton from "../../ui/Buuton";
 import CarDetails from "./CarDetails";
 import useAddToCard from "../../feachers/payment/useAddToCard";
 import RecentCars from "../../ui/RecentCars";
+import RatingCar from "../../ui/Rating";
 
 function CarInformation() {
   const { isLoading, product } = useCarById();
-  const [value, setValue] = useState(2);
   const { addCar, isPending } = useAddToCard();
 
   if (isLoading) {
@@ -75,25 +75,7 @@ function CarInformation() {
               </Typography>
               <LikeCars id={product._id} />
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                width: "100%",
-                justifyContent: "flex-start",
-                alignItems: "center",
-              }}
-            >
-              <Rating
-                name="simple-controlled"
-                value={value}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                }}
-              />
-              <Typography variant="body2" sx={{ color: "secondary.300" }}>
-                {product.numReviews}+ Reviewer
-              </Typography>
-            </Box>
+            <RatingCar />
           </Box>
           <Box>
             <Typography

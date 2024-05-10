@@ -1,9 +1,9 @@
 import { Box, IconButton, Backdrop, CircularProgress } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import SettingsIcon from "@mui/icons-material/Settings";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { useNavigate } from "react-router-dom";
 import useUser from "../feachers/authentication/useUser";
+import Loading from "./Loading";
 
 function NavbarIcon() {
   const { user, isLoading } = useUser();
@@ -17,24 +17,41 @@ function NavbarIcon() {
     }
   };
 
+  const handelFavourite = () => {
+    if (user) {
+      navigate("/user-profile/user-favourit");
+    } else if (!user) {
+      navigate("/auth");
+    }
+  };
+
+  const handelCard = () => {
+    if (user) {
+      navigate("/user-profile/user-order");
+    } else if (!user) {
+      navigate("/auth");
+    }
+  };
+
   return (
-    <>
-      <Backdrop
-        open={isLoading}
-        style={{
-          zIndex: 1000,
-          color: "#fff",
-        }}
+    <Box sx={{ display: "flex", alignItems: "center" }}>
+      <IconButton
+        onClick={handelFavourite}
+        sx={{ display: { xs: "none", sm: "inline" } }}
       >
-        <CircularProgress color="inherit" />
-      </Backdrop>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <IconButton sx={{ display: { xs: "none", sm: "inline" } }}>
-          <FavoriteIcon />
+        <FavoriteIcon />
+      </IconButton>
+      <IconButton
+        onClick={handelCard}
+        sx={{ display: { xs: "none", sm: "inline" } }}
+      >
+        <ShoppingBasketIcon />
+      </IconButton>
+      {isLoading ? (
+        <IconButton>
+          <Loading color="blue" width="24px" />
         </IconButton>
-        <IconButton sx={{ display: { xs: "none", sm: "inline" } }}>
-          <NotificationsIcon />
-        </IconButton>
+      ) : (
         <IconButton onClick={handelUser}>
           <Box
             sx={{ width: "34px", height: "34px" }}
@@ -42,8 +59,8 @@ function NavbarIcon() {
             src="/photos/avatar.png"
           ></Box>
         </IconButton>
-      </Box>
-    </>
+      )}
+    </Box>
   );
 }
 

@@ -2,9 +2,11 @@ import { Button } from "@mui/material";
 import React from "react";
 import useUser from "../feachers/authentication/useUser";
 import Loading from "./Loading";
+import { useNavigate } from "react-router-dom";
 
 function OrderBuuton({ onClick, children, id }) {
   const { isLoading, cart, user } = useUser();
+  const navigate = useNavigate();
 
   if (!user) {
     return <Loading />;
@@ -13,7 +15,7 @@ function OrderBuuton({ onClick, children, id }) {
   if (user.cart.products.map((product) => product.productId).includes(id)) {
     return (
       <Button
-        onClick={() => {}}
+        onClick={() => navigate("/user-card")}
         variant="contained"
         sx={{
           bgcolor: "primary.100",
