@@ -64,3 +64,37 @@ export default function InputField({
     </Box>
   );
 }
+
+export function BillingInput({
+  label,
+  name,
+  register,
+  validationSchema,
+  type = "text",
+  required,
+  errors,
+  value,
+  onChange,
+  placeholder,
+}) {
+  return (
+    <Box>
+      <TextField
+        label={placeholder}
+        {...register(name, validationSchema)}
+        id={name}
+        autoComplete="off"
+        type={type}
+        value={value}
+        onChange={onChange}
+        variant="filled"
+        fullWidth
+      />
+      {errors && errors[name] && (
+        <Typography variant="body2" sx={{ color: "error.main" }}>
+          {errors[name]?.message}
+        </Typography>
+      )}
+    </Box>
+  );
+}

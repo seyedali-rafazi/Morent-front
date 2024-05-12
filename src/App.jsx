@@ -13,29 +13,32 @@ import UserOrder from "./components/profile/UserOrder";
 import UserFavourit from "./components/profile/userFavourit/UserFavourit";
 import CarRent from "./components/car-rent/CarRent";
 import UserCard from "./pages/UserCard";
+import { FormProvider } from "./context/FormContext";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Toaster />
-      <Navbar />
-      <Routes>
-        <Route path="/user-profile" element={<UserProfile />}>
-          <Route index element={<Navigate to="dashboard" />} />
-          <Route path="dashboard" element={<UserDashboard />} />
-          <Route path="user-order" element={<UserOrder />} />
-          <Route path="user-favourit" element={<UserFavourit />} />
-        </Route>
-        <Route path="/" element={<Home />} />
-        <Route path="/auth" element={<UserAuth />} />
-        <Route path="/Complete-profile" element={<CompleteProfile />} />
-        <Route path="/available-cars" element={<AvailableCars />} />
-        <Route path="/available-cars" element={<AvailableCars />} />
-        <Route path="/car-rent/:id" element={<CarRent />} />
-        <Route path="/user-card" element={<UserCard />} />
-      </Routes>
+      <FormProvider>
+        <Toaster />
+        <Navbar />
+        <Routes>
+          <Route path="/user-profile" element={<UserProfile />}>
+            <Route index element={<Navigate to="dashboard" />} />
+            <Route path="dashboard" element={<UserDashboard />} />
+            <Route path="user-order" element={<UserOrder />} />
+            <Route path="user-favourit" element={<UserFavourit />} />
+          </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<UserAuth />} />
+          <Route path="/Complete-profile" element={<CompleteProfile />} />
+          <Route path="/available-cars" element={<AvailableCars />} />
+          <Route path="/available-cars" element={<AvailableCars />} />
+          <Route path="/car-rent/:id" element={<CarRent />} />
+          <Route path="/user-card" element={<UserCard />} />
+        </Routes>
+      </FormProvider>
     </QueryClientProvider>
   );
 }

@@ -1,7 +1,5 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React from "react";
-import useUser from "../../feachers/authentication/useUser";
-import Loading from "../../ui/Loading";
 import RatingCar from "../../ui/Rating";
 import {
   totalGrossPrice,
@@ -9,11 +7,8 @@ import {
   totalPrice,
 } from "../../utils/prices";
 
-function CardSidebar() {
-  const { cart, isLoading } = useUser();
-  return isLoading ? (
-    <Loading />
-  ) : (
+function CardSidebar({ cart }) {
+  return (
     <Box
       sx={{
         display: "flex",
@@ -47,13 +42,13 @@ function CardSidebar() {
         <Box sx={{ width: "150px" }}>
           <img
             style={{ width: "100%" }}
-            src={cart.productDetail[0].imageLink}
+            src={cart?.productDetail[0].imageLink}
             alt=""
           />
         </Box>
         <Box>
           <Typography variant="h6" sx={{ fontSize: "17px", fontWeight: "600" }}>
-            {cart.productDetail[0].title} +{" "}
+            {cart?.productDetail[0].title} +{" "}
             <Typography
               sx={{
                 display: "inline-block",
@@ -63,7 +58,7 @@ function CardSidebar() {
                 color: "primary.100",
               }}
             >
-              {cart.productDetail.length}
+              {cart?.productDetail.length}
             </Typography>
           </Typography>
           <Box sx={{ display: { xs: "none", lg: "block" } }}>
@@ -91,7 +86,7 @@ function CardSidebar() {
             Subtotal
           </Typography>
           <Typography sx={{ fontWeight: "600" }}>
-            ${totalGrossPrice(cart.productDetail)}
+            ${totalGrossPrice(cart?.productDetail)}
           </Typography>
         </Box>
         <Box
@@ -121,7 +116,7 @@ function CardSidebar() {
             Discount
           </Typography>
           <Typography sx={{ fontWeight: "600" }}>
-            ${totalOffAmount(cart.productDetail)}
+            ${totalOffAmount(cart?.productDetail)}
           </Typography>
         </Box>
       </Box>
@@ -165,7 +160,7 @@ function CardSidebar() {
         </Box>
         <Box>
           <Typography sx={{ fontWeight: "600", fontSize: "20px" }}>
-            ${totalPrice(cart.productDetail)}
+            ${totalPrice(cart?.productDetail)}
           </Typography>
         </Box>
       </Box>
