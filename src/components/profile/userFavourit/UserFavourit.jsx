@@ -8,14 +8,27 @@ function UserFavourit() {
   const { user, isLoading } = useUser();
 
   if (isLoading) {
-    return <Loading />;
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+          width: "100%",
+        }}
+      >
+        <Loading width="100px" color="blue" />
+      </Box>
+    );
   }
+
   return (
     <Box>
       {user?.favoriteProduct == 0 ? (
         <EmptyPage
           emptySection="Favoutit List"
-          bodyContent="You have not any favourite car "
+          bodyContent="You do not have any favourite car "
           buttonContent="Car Menu"
           path="/available-cars"
         />
