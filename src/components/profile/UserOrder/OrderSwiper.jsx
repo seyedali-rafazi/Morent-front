@@ -3,8 +3,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
-import CarCardContent from "../../../ui/CarCardContent";
+import { Keyboard, Navigation, Pagination } from "swiper/modules";
 import CarOrder from "./CarOrder";
 
 function OrderSwiper({ products }) {
@@ -14,6 +13,13 @@ function OrderSwiper({ products }) {
         <Swiper
           slidesPerView={1}
           spaceBetween={10}
+          keyboard={{
+            enabled: true,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Keyboard, Pagination, Navigation]}
           breakpoints={{
             450: {
               slidesPerView: 1,
@@ -32,7 +38,6 @@ function OrderSwiper({ products }) {
               spaceBetween: 20,
             },
           }}
-          modules={[Pagination]}
         >
           {products.map((car) => (
             <SwiperSlide key={car._id}>

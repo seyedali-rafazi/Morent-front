@@ -27,7 +27,7 @@ function NavbarIcon() {
 
   const handelCard = () => {
     if (user) {
-      navigate("/user-profile/user-order");
+      navigate("/user-card");
     } else if (!user) {
       navigate("/auth");
     }
