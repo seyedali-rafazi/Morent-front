@@ -4,6 +4,7 @@ import Sidebar from "../components/available-car/Sidebar";
 import CarCard from "../ui/CarCard";
 import useGetAllCars from "../feachers/cars/useGetAllCars";
 import BootemDropdown from "../components/available-car/BootemDropdown";
+import SkeletonCard from "../ui/SkeletonCard";
 
 function AvailableCars() {
   const { isLoading, products } = useGetAllCars();
@@ -48,13 +49,23 @@ function AvailableCars() {
           }}
         >
           <BootemDropdown />
-          <Grid
-            container
-            rowSpacing={1}
-            columnSpacing={{ xs: 1}}
-          >
-            <CarCard products={products} lgCount={4} />
-          </Grid>
+          {isLoading ? (
+            <Box
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "space-evenly",
+                gap: "20px",
+              }}
+            >
+              <SkeletonCard cards={9} />
+            </Box>
+          ) : (
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1 }}>
+              <CarCard isLoading={isLoading} products={products} lgCount={4} />
+            </Grid>
+          )}
+          s
         </Box>
       </Box>
     </Box>

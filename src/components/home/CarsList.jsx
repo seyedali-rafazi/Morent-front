@@ -3,6 +3,7 @@ import React from "react";
 import useGetAllCars from "../../feachers/cars/useGetAllCars";
 import CarCard from "../../ui/CarCard";
 import { useNavigate } from "react-router-dom";
+import SkeletonCard from "../../ui/SkeletonCard";
 
 function CarsList() {
   const { isLoading, products } = useGetAllCars();
@@ -15,9 +16,22 @@ function CarsList() {
       >
         Recomendation Car
       </Typography>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1}}>
-        <CarCard products={products} lgCount="3" />
-      </Grid>
+      {isLoading ? (
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-evenly",
+            gap: "20px",
+          }}
+        >
+          <SkeletonCard cards={8} />
+        </Box>
+      ) : (
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1 }}>
+          <CarCard products={products} lgCount="3" />
+        </Grid>
+      )}
       <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <Button
           onClick={() => navigate("/available-cars")}

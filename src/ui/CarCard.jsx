@@ -1,9 +1,4 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
-import CarInformation from "./CarInformation";
-import LikeCars from "./LikeCars";
-import { useNavigate } from "react-router-dom";
-import CarPrice from "./CarPrice";
-import OrderBuuton from "./Buuton";
+import { Grid } from "@mui/material";
 import CarCardContent from "./CarCardContent";
 
 function CarCard({ products, lgCount }) {
