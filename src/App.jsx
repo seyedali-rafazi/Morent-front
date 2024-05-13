@@ -8,12 +8,12 @@ import { Toaster } from "react-hot-toast";
 import CompleteProfile from "./feachers/authentication/CompleteProfile";
 import AvailableCars from "./pages/AvailableCars";
 import UserProfile from "./pages/UserProfile";
-import UserDashboard from "./components/profile/UserDashboard";
 import UserFavourit from "./components/profile/userFavourit/UserFavourit";
 import CarRent from "./components/car-rent/CarRent";
 import UserCard from "./pages/UserCard";
 import { FormProvider } from "./context/FormContext";
 import UserOrder from "./components/profile/UserOrder/UserOrder";
+import UserDashboard from "./components/profile/dashboard/UserDashboard";
 
 const queryClient = new QueryClient();
 

@@ -35,7 +35,11 @@ function UserProfile() {
         <Box
           sx={{
             display: "flex",
-            justifyContent: { xs: "center", sm: "flex-start" },
+            justifyContent: {
+              xs: "flex-start",
+              sm: "center",
+              md: "flex-start",
+            },
             flexDirection: { xs: "row", md: "column" },
             height: "100%",
             overflow: "auto",
