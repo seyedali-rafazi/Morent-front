@@ -48,7 +48,15 @@ function UserAuth() {
       >
         <form
           onSubmit={handleSubmit(handelUserAuth)}
-          style={{ display: "flex", flexDirection: "column", gap: "25px" }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "25px",
+            backgroundColor: "white",
+            padding: "20px",
+            boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+            borderRadius: "10px",
+          }}
         >
           <Typography
             variant="h5"
