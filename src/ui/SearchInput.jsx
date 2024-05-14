@@ -2,9 +2,17 @@ import { Divider, IconButton, InputBase, Paper } from "@mui/material";
 import TuneIcon from "@mui/icons-material/Tune";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SearchInput() {
   const [searchValue, setSearchValue] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    navigate(`/available-cars?search=${encodeURIComponent(searchValue)}`, {
+      replace: false,
+    });
+  };
   return (
     <Paper
       component="form"
@@ -16,7 +24,7 @@ function SearchInput() {
         borderRadius: "8px",
       }}
     >
-      <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
+      <IconButton onClick={handleSubmit} type="button" sx={{ p: "10px" }} aria-label="search">
         <SearchIcon />
       </IconButton>
       <InputBase
