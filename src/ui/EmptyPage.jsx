@@ -1,4 +1,4 @@
-import { Box, Button, Link, Typography } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 import React from "react";
 
 function EmptyPage({ emptySection, bodyContent, buttonContent, path }) {

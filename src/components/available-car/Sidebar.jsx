@@ -1,4 +1,4 @@
-import { Box, Grid, Slider, Typography } from "@mui/material";
+import { Box, Slider, Typography } from "@mui/material";
 import React, { useState } from "react";
 import CarType from "./CarType";
 import useGetAllCategory from "../../feachers/cars/useGetAllCategory";
@@ -20,7 +20,7 @@ const capacites = [
 ];
 
 function Sidebar() {
-  const { carGroups, isLoading } = useGetAllCategory();
+  const { carGroups } = useGetAllCategory();
   const [price, setPrice] = useState(250);
   const [searchParams, setSearchParams] = useSearchParams();
 

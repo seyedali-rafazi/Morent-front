@@ -14,6 +14,7 @@ import UserCard from "./pages/UserCard";
 import { FormProvider } from "./context/FormContext";
 import UserOrder from "./components/profile/UserOrder/UserOrder";
 import UserDashboard from "./components/profile/dashboard/UserDashboard";
+import Footer from "./ui/Footer";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +26,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/user-profile" element={<UserProfile />}>
-            <Route index element={<Navigate to="dashboard" />} />
+            <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<UserDashboard />} />
             <Route path="user-order" element={<UserOrder />} />
             <Route path="user-favourit" element={<UserFavourit />} />
@@ -38,6 +39,7 @@ function App() {
           <Route path="/car-rent/:id" element={<CarRent />} />
           <Route path="/user-card" element={<UserCard />} />
         </Routes>
+        <Footer />
       </FormProvider>
     </QueryClientProvider>
   );

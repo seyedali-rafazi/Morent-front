@@ -1,9 +1,8 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import React from "react";
 import HomeBanner from "../components/home/HomeBanner";
 import OrderInformation from "../components/home/OrderInformation";
 import CarsList from "../components/home/CarsList";
-import SortedCars from "../ui/SortedCars";
 
 function Home() {
   return (

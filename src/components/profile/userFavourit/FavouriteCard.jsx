@@ -1,7 +1,6 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import LikeCars from "../../../ui/LikeCars";
-import CarInformation from "../../../ui/CarInformation";
 
 function FavouriteCard({ products }) {
   return products.map((car) => (

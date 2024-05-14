@@ -18,6 +18,7 @@
     "@tanstack/react-query": "^5.32.1",
     "axios": "^1.6.8",
     "dayjs": "^1.11.11",
+    "generate-unique-id": "^2.0.3",
     "query-string": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

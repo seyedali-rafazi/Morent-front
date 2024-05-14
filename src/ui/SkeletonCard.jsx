@@ -1,4 +1,5 @@
 import { Box, Skeleton } from "@mui/material";
+import generateUniqueId from "generate-unique-id";
 import React from "react";
 
 function SkeletonCard({ cards }) {
@@ -15,7 +16,7 @@ function SkeletonCard({ cards }) {
         minHeight: "330px",
         borderRadius: "10px",
       }}
-      key={index}
+      key={generateUniqueId()}
     >
       <Box
         sx={{

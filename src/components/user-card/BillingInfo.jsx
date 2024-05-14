@@ -2,19 +2,15 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import { BillingInput } from "../../ui/InputField";
 import { useFormBilling } from "../../context/FormContext";
-import { register } from "swiper/element";
 import { useForm } from "react-hook-form";
 import BillingStep from "./BillingStep";
 
 function BillingInfo() {
   const { billingForm, setBillingForm } = useFormBilling();
-  console.log(billingForm.phoneNumber);
 
   const {
     register,
-    handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
 
   return (

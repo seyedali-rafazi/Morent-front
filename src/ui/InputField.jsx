@@ -66,12 +66,10 @@ export default function InputField({
 }
 
 export function BillingInput({
-  label,
   name,
   register,
   validationSchema,
   type = "text",
-  required,
   errors,
   value,
   onChange,

@@ -9,7 +9,6 @@ function RecentCars() {
 
   const handleChange = (event) => {
     let sortValue = event.target.value;
-    console.log(sortValue);
     setCarSort(sortValue);
     if (sortValue == "") {
       searchParams.delete("sort", carSort);

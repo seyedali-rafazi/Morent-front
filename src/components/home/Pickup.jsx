@@ -1,11 +1,10 @@
 import { Box, Button, TextField } from "@mui/material";
-import PickCity from "./PickCity";
 import DatePickerCar from "./DatePickerCar";
 import { DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Pickup({ text }) {
+function Pickup() {
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
 

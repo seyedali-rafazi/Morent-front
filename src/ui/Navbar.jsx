@@ -5,21 +5,20 @@ import {
   Divider,
   Drawer,
   IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
+  Skeleton,
   Toolbar,
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchInput from "./SearchInput";
 import NavbarIcon from "./NavbarIcon";
+import useUser from "../feachers/authentication/useUser";
+import SidebarItems from "./SidebarItems";
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
 
 function Navbar() {
+  const { user, isLoading } = useUser();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -32,19 +31,24 @@ function Navbar() {
         MUI
       </Typography>
       <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <SidebarItems user={user} />
     </Box>
   );
 
-  return (
+  return isLoading ? (
+    <AppBar
+      component="nav"
+      sx={{
+        bgcolor: "primary.100",
+        height: "74px",
+        py: { xs: "5px" },
+      }}
+    >
+      <Skeleton variant="rectangular" width="100%">
+        <div style={{ height: "74px" }} />
+      </Skeleton>
+    </AppBar>
+  ) : (
     <Box sx={{ display: "flex" }}>
       <AppBar
         component="nav"
@@ -79,7 +83,7 @@ function Navbar() {
             ></Box>
             <SearchInput />
           </Box>
-          <NavbarIcon />
+          <NavbarIcon user={user} />
         </Toolbar>
       </AppBar>
 

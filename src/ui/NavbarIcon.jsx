@@ -1,12 +1,9 @@
-import { Box, IconButton, Backdrop, CircularProgress } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { useNavigate } from "react-router-dom";
-import useUser from "../feachers/authentication/useUser";
-import Loading from "./Loading";
 
-function NavbarIcon() {
-  const { user, isLoading } = useUser();
+function NavbarIcon({ user }) {
   const navigate = useNavigate();
 
   const handelUser = () => {
@@ -47,19 +44,14 @@ function NavbarIcon() {
       >
         <ShoppingBasketIcon />
       </IconButton>
-      {isLoading ? (
-        <IconButton>
-          <Loading color="blue" width="24px" />
-        </IconButton>
-      ) : (
-        <IconButton onClick={handelUser}>
-          <Box
-            sx={{ width: "34px", height: "34px" }}
-            component="img"
-            src="/photos/avatar.png"
-          ></Box>
-        </IconButton>
-      )}
+
+      <IconButton onClick={handelUser}>
+        <Box
+          sx={{ width: "34px", height: "34px" }}
+          component="img"
+          src="/photos/avatar.png"
+        ></Box>
+      </IconButton>
     </Box>
   );
 }

@@ -3,16 +3,30 @@ import React from "react";
 import useUser from "../feachers/authentication/useUser";
 import Loading from "./Loading";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function OrderBuuton({ onClick, children, id }) {
-  const { isLoading, cart, user } = useUser();
+  const { isLoading , user } = useUser();
   const navigate = useNavigate();
 
   if (!user) {
-    return <Loading />;
+    if (isLoading) {
+      return <Loading />;
+    }
+    return (
+      <Button
+        onClick={() => toast.error("Login into your page")}
+        variant="contained"
+        sx={{
+          bgcolor: "primary.600",
+        }}
+      >
+        {children}
+      </Button>
+    );
   }
 
-  if (user.cart.products.map((product) => product.productId).includes(id)) {
+  if (user.cart?.products.map((product) => product.productId).includes(id)) {
     return (
       <Button
         onClick={() => navigate("/user-card")}

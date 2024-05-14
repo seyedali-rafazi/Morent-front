@@ -16,7 +16,6 @@ function UserAuth() {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
 
   const handelUserAuth = async (data) => {
