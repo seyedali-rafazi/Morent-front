@@ -14,6 +14,7 @@ function CarRent() {
         width: "100%",
         display: "flex",
         mx: "auto",
+        pb: "15px",
       }}
     >
       <Box

@@ -18,6 +18,7 @@ function AvailableCars() {
         width: "100%",
         display: "flex",
         mx: "auto",
+        pb: "15px",
       }}
     >
       <Box
@@ -65,7 +66,6 @@ function AvailableCars() {
               <CarCard isLoading={isLoading} products={products} lgCount={4} />
             </Grid>
           )}
-          s
         </Box>
       </Box>
     </Box>

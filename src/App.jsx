@@ -35,7 +35,6 @@ function App() {
           <Route path="/auth" element={<UserAuth />} />
           <Route path="/Complete-profile" element={<CompleteProfile />} />
           <Route path="/available-cars" element={<AvailableCars />} />
-          <Route path="/available-cars" element={<AvailableCars />} />
           <Route path="/car-rent/:id" element={<CarRent />} />
           <Route path="/user-card" element={<UserCard />} />
         </Routes>

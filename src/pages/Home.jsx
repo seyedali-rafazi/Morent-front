@@ -10,6 +10,7 @@ function Home() {
       sx={{
         bgcolor: "#F3F8FF",
         minHeight: { xs: "calc(100vh - 64px)", md: "calc(100vh - 74px)" },
+        pb: "15px",
       }}
     >
       <Container

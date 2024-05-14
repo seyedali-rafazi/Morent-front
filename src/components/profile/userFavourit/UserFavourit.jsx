@@ -24,7 +24,7 @@ function UserFavourit() {
   }
 
   return (
-    <Box>
+    <Box sx={{ p: "15px" }}>
       {user?.favoriteProduct == 0 ? (
         <EmptyPage
           emptySection="Favoutit List"
