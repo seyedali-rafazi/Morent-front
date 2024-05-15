@@ -15,6 +15,7 @@ import { FormProvider } from "./context/FormContext";
 import UserOrder from "./components/profile/UserOrder/UserOrder";
 import UserDashboard from "./components/profile/dashboard/UserDashboard";
 import Footer from "./ui/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ function App() {
       <FormProvider>
         <Toaster />
         <Navbar />
+        <ScrollToTop />
         <Routes>
           <Route path="/user-profile" element={<UserProfile />}>
             <Route index element={<Navigate to="dashboard" replace />} />
