@@ -22,11 +22,13 @@ function CardSection({ cart }) {
           width: "100%",
           display: "flex",
           mx: "auto",
+          py: "20px",
         }}
       >
         <Box
           sx={{
             display: "flex",
+            gap: "5px",
             flexDirection: { xs: "column-reverse", md: "row" },
             width: "100%",
             flexGrow: "1",
@@ -46,8 +48,7 @@ function CardSection({ cart }) {
           </Box>
           <Box
             sx={{
-              height: "100vh",
-              px: "20px",
+              px: "15px",
               flexDirection: "column",
               width: { xs: "100%", md: "36%" },
             }}
