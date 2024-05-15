@@ -1,13 +1,13 @@
 import React from "react";
 import ProfileLayout from "../components/profile/ProfileLayout";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import NavOptions from "../ui/NavOptions";
 import { TbHome } from "react-icons/tb";
 import { FaCarRear } from "react-icons/fa6";
 import { IoIosHeart } from "react-icons/io";
+import LogoutButton from "../feachers/authentication/LogoutButton";
 
 function UserProfile() {
-
   return (
     <ProfileLayout>
       <Box
@@ -36,6 +36,7 @@ function UserProfile() {
         <Box
           sx={{
             display: "flex",
+            gap: "5px",
             justifyContent: {
               xs: "flex-start",
               sm: "center",
@@ -48,7 +49,7 @@ function UserProfile() {
           }}
         >
           <NavOptions path="/user-profile/dashboard">
-            <TbHome style={{}} />
+            <TbHome />
             <Typography>Dashboard</Typography>
           </NavOptions>
           <NavOptions path="/user-profile/user-order">
@@ -59,6 +60,7 @@ function UserProfile() {
             <IoIosHeart />
             <Typography>Favourits</Typography>
           </NavOptions>
+          <LogoutButton />
         </Box>
       </Box>
     </ProfileLayout>

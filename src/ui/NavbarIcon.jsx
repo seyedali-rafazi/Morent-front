@@ -40,6 +40,7 @@ function NavbarIcon({ user }) {
       </IconButton>
       <IconButton
         onClick={handelCard}
+        sx={{ display: { xs: "none", sm: "inline" } }}
       >
         <ShoppingBasketIcon />
       </IconButton>

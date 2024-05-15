@@ -1,8 +1,9 @@
 import { Box, Container } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import HomeBanner from "../components/home/HomeBanner";
 import OrderInformation from "../components/home/OrderInformation";
 import CarsList from "../components/home/CarsList";
+import useUser from "../feachers/authentication/useUser";
 
 function Home() {
   return (
