@@ -11,7 +11,7 @@ import CarDetaliSleleton from "./CarDetaliSleleton";
 
 function CarDetail() {
   const { isLoading, product } = useCarById();
-  const { addCar, isPending } = useAddToCard();
+  const { addCar } = useAddToCard();
 
   return isLoading ? (
     <CarDetaliSleleton />

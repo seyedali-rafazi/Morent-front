@@ -34,6 +34,8 @@ function Footer() {
           justifyContent: "space-between",
           gap: "25px",
           py: "20px",
+          maxWidth: "1680px",
+          mx: "auto",
         }}
       >
         <Box
@@ -113,6 +115,8 @@ function Footer() {
           borderTop: "2px solid",
           borderColor: "secondary.200",
           gap: "20px",
+          maxWidth: "1680px",
+          mx: "auto",
         }}
       >
         <Box

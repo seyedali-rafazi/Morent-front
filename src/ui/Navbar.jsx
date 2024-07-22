@@ -58,33 +58,35 @@ function Navbar() {
           py: { xs: "5px" },
         }}
       >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon sx={{ color: "secondary.400" }} />
-          </IconButton>
-          <Box
-            sx={{
-              display: "flex",
-              flexGrow: "1",
-              justifyContent: { xs: "center", sm: "flex-start" },
-              gap: "20px",
-            }}
-          >
+        <Box sx={{ maxWidth: "1680px" , mx:"auto" , width:"100%" }}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon sx={{ color: "secondary.400" }} />
+            </IconButton>
             <Box
-              sx={{ my: "auto" }}
-              component="img"
-              src="/photos/logo.svg"
-            ></Box>
-            <SearchInput />
-          </Box>
-          <NavbarIcon user={user} />
-        </Toolbar>
+              sx={{
+                display: "flex",
+                flexGrow: "1",
+                justifyContent: { xs: "center", sm: "flex-start" },
+                gap: "20px",
+              }}
+            >
+              <Box
+                sx={{ my: "auto" }}
+                component="img"
+                src="/photos/logo.svg"
+              ></Box>
+              <SearchInput />
+            </Box>
+            <NavbarIcon user={user} />
+          </Toolbar>
+        </Box>
       </AppBar>
 
       <nav>

@@ -14,7 +14,7 @@ function AvailableCars() {
       sx={{
         bgcolor: "#F3F8FF",
         minHeight: { xs: "calc(100vh - 64px)", md: "calc(100vh - 74px)" },
-        maxWidth: "1280px",
+        maxWidth: "1680px",
         width: "100%",
         display: "flex",
         mx: "auto",
@@ -43,6 +43,7 @@ function AvailableCars() {
         </Box>
         <Box
           sx={{
+            p: "20px",
             width: "100%",
             display: "flex",
             flexDirection: "column",

@@ -9,20 +9,19 @@ function HomeBanner() {
         justifyContent: "center",
         alignItems: "center",
         gap: "20px",
-        maxWidth: { xs: "420px", lg: "550px" },
         mx: "auto",
         mt: "40px",
       }}
     >
       <Box
-        sx={{ width: "100%" }}
+        sx={{ width: { xs: "100%", md: "50%" } }}
         component="img"
         src="/photos/blue-cover.svg"
       ></Box>
       <Box
         sx={{
           display: { xs: "none", md: "inline" },
-          width: "100%",
+          width: "50%",
         }}
         component="img"
         src="/photos/darkblue-cover.svg"
