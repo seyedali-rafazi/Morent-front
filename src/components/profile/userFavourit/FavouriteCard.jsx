@@ -56,6 +56,10 @@ function FavouriteCard({ products }) {
           }}
         >
           <img
+            role="presentation"
+            onError={(e) => {
+            e.currentTarget.src = "/photos/bmw.webp";
+            }}
             style={{
               minWidth: "200px",
               minHeight: "200px",

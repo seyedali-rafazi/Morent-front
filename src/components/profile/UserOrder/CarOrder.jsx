@@ -48,6 +48,10 @@ function CarOrder({ car }) {
         }}
       >
         <img
+          role="presentation"
+          onError={(e) => {
+            e.currentTarget.src = "/photos/bmw.webp";
+          }}
           style={{
             maxWidth: "100%",
             maxHeight: "100%",

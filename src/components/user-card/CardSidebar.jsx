@@ -41,6 +41,10 @@ function CardSidebar({ cart }) {
       >
         <Box sx={{ width: "150px" }}>
           <img
+            role="presentation"
+            onError={(e) => {
+              e.currentTarget.src = "/photos/bmw.webp";
+            }}
             style={{ width: "100%" }}
             src={cart?.productDetail[0].imageLink}
             alt=""

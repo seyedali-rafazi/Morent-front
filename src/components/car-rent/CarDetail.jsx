@@ -38,6 +38,10 @@ function CarDetail() {
         }}
       >
         <img
+          role="presentation"
+          onError={(e) => {
+            e.currentTarget.src = "/photos/bmw.webp";
+          }}
           style={{ width: "100%" }}
           src={product.imageLink}
           alt={product.title}
