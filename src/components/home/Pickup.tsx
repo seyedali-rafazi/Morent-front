@@ -1,8 +1,27 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import DatePickerCar from "./DatePickerCar";
 import { DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+const PickupRoot = styled("div")(({ theme }) => ({
+  padding: "5px",
+  backgroundColor: theme.palette.primary[100],
+}));
+
+const PickupForm = styled("div")(({ theme }) => ({
+  display: "flex",
+  gap: "16px",
+  flexDirection: "column",
+  justifyContent: "space-evenly",
+  alignContent: "center",
+  alignItems: "center",
+  padding: "10px",
+  [theme.breakpoints.up("md")]: {
+    flexDirection: "row",
+  },
+}));
 
 function Pickup() {
   const [searchInput, setSearchInput] = useState("");
@@ -15,19 +34,8 @@ function Pickup() {
   };
 
   return (
-    <Box sx={{ p: "5px", bgcolor: "primary.100" }}>
-      <Box
-        sx={{
-          display: "flex",
-          gap: "16px",
-          flexDirection: { xs: "column", md: "row" },
-          justifyContent: "space-evenly",
-          alignContent: "center",
-          alignItems: "center",
-          p: "10px",
-        }}
-      >
-        {/* <PickCity /> */}
+    <PickupRoot>
+      <PickupForm>
         <DemoItem label={"Search"} sx={{ width: "100%", flexGrow: "1" }}>
           <TextField
             onChange={(e) => setSearchInput(e.target.value)}
@@ -51,8 +59,8 @@ function Pickup() {
         >
           Search
         </Button>
-      </Box>
-    </Box>
+      </PickupForm>
+    </PickupRoot>
   );
 }
 

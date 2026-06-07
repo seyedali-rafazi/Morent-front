@@ -14,6 +14,7 @@ import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Loading from "../../../ui/Loading";
+import { getProfileCompletion } from "../../../utils/profileCompletion";
 
 interface DashboardStats {
   favoriteCount: number;
@@ -64,7 +65,8 @@ function UserDashboard() {
   const cartCount =
     user?.cart?.productDetail?.length || cart?.productDetail?.length || 0;
   const stats = { favoriteCount, orderCount, cartCount };
-  const profileComplete = user?.name && user?.email ? 85 : 45;
+  const { percent: profileComplete, missing: missingProfileFields } =
+    getProfileCompletion(user);
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
@@ -111,6 +113,11 @@ function UserDashboard() {
               "& .MuiLinearProgress-bar": { bgcolor: "#fff", borderRadius: 4 },
             }}
           />
+          {missingProfileFields.length > 0 && (
+            <Typography sx={{ mt: 1.5, fontSize: "12px", color: "primary.200", lineHeight: 1.5 }}>
+              Add {missingProfileFields.join(", ")} to reach 100%.
+            </Typography>
+          )}
         </Box>
       </Box>
 

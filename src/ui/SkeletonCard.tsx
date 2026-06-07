@@ -1,70 +1,73 @@
-import { Box, Skeleton } from "@mui/material";
+import { Skeleton } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import generateUniqueId from "generate-unique-id";
 
 interface SkeletonCardProps {
   cards: number;
 }
 
+const Card = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
+  width: "100%",
+  maxWidth: "300px",
+  backgroundColor: "#FFFFFF",
+  padding: "20px",
+  minHeight: "330px",
+  borderRadius: "10px",
+  [theme.breakpoints.up("sm")]: {
+    maxWidth: "330px",
+  },
+  [theme.breakpoints.up("md")]: {
+    maxWidth: "250px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    maxWidth: "270px",
+  },
+}));
+
+const Row = styled("div")({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+});
+
+const ImageSkeletonWrap = styled("div")({
+  height: "150px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
 function SkeletonCard({ cards }: SkeletonCardProps) {
   return Array.from({ length: cards }).map(() => (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "10px",
-        width: "100%",
-        maxWidth: { xs: "300px", sm: "330px", md: "250px", lg: "270px" },
-        bgcolor: "primary.100",
-        p: "20px",
-        minHeight: "330px",
-        borderRadius: "10px",
-      }}
-      key={generateUniqueId()}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+    <Card key={generateUniqueId()}>
+      <Row>
         <Skeleton variant="rectangular" width="100%">
           <div style={{ paddingTop: "10%" }} />
         </Skeleton>
-      </Box>
+      </Row>
 
-      <Box
-        sx={{
-          height: "150px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <ImageSkeletonWrap>
         <Skeleton variant="rectangular" width="100%">
           <div style={{ paddingTop: "57%" }} />
         </Skeleton>
-      </Box>
+      </ImageSkeletonWrap>
 
       <Skeleton variant="rectangular" width="100%">
         <div style={{ paddingTop: "10%" }} />
       </Skeleton>
 
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+      <Row>
         <Skeleton variant="rectangular" width="20%">
           <div style={{ paddingTop: "50%" }} />
         </Skeleton>
         <Skeleton variant="rectangular" width="20%">
           <div style={{ paddingTop: "50%" }} />
         </Skeleton>
-      </Box>
-    </Box>
+      </Row>
+    </Card>
   ));
 }
 

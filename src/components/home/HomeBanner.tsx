@@ -1,69 +1,117 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 import DirectionsCarFilledIcon from "@mui/icons-material/DirectionsCarFilled";
 
+const BannerRoot = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(3),
+  margin: "0 auto",
+  marginTop: theme.spacing(2),
+  [theme.breakpoints.up("md")]: {
+    flexDirection: "row",
+    marginTop: theme.spacing(4),
+  },
+}));
+
+const PrimaryCard = styled("div")(({ theme }) => ({
+  flex: 1,
+  minHeight: 220,
+  borderRadius: "24px",
+  background: "linear-gradient(135deg, #3563E9 0%, #0A196F 100%)",
+  padding: theme.spacing(3),
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  position: "relative",
+  overflow: "hidden",
+  boxShadow: "0 20px 50px rgba(53, 99, 233, 0.25)",
+  [theme.breakpoints.up("md")]: {
+    minHeight: 320,
+    padding: theme.spacing(5),
+  },
+}));
+
+const CardGlow = styled("div")({
+  position: "absolute",
+  right: -40,
+  bottom: -40,
+  width: 200,
+  height: 200,
+  borderRadius: "50%",
+  backgroundColor: "rgba(255,255,255,0.08)",
+});
+
+const HeroTitle = styled(Typography)(({ theme }) => ({
+  color: "#fff",
+  fontSize: "28px",
+  fontWeight: 800,
+  lineHeight: 1.15,
+  marginBottom: theme.spacing(2),
+  maxWidth: 420,
+  [theme.breakpoints.up("md")]: {
+    fontSize: "42px",
+  },
+}));
+
+const HeroSubtitle = styled(Typography)(({ theme }) => ({
+  color: theme.palette.primary[300],
+  fontSize: "14px",
+  marginBottom: theme.spacing(3),
+  maxWidth: 380,
+  lineHeight: 1.6,
+  [theme.breakpoints.up("md")]: {
+    fontSize: "16px",
+  },
+}));
+
+
+const SecondaryCard = styled("div")(({ theme }) => ({
+  flex: 1,
+  minHeight: 180,
+  borderRadius: "24px",
+  background: "linear-gradient(160deg, #1A37A7 0%, #040815 100%)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  position: "relative",
+  overflow: "hidden",
+  boxShadow: "0 20px 50px rgba(10, 25, 111, 0.2)",
+  [theme.breakpoints.up("md")]: {
+    minHeight: 320,
+  },
+}));
+
+const CarIcon = styled(DirectionsCarFilledIcon)(({ theme }) => ({
+  fontSize: 120,
+  color: "rgba(255,255,255,0.12)",
+  transform: "rotate(-12deg)",
+  [theme.breakpoints.up("md")]: {
+    fontSize: 180,
+  },
+}));
+
+const SecondaryLabel = styled(Typography)(({ theme }) => ({
+  position: "absolute",
+  bottom: 24,
+  left: 24,
+  color: theme.palette.primary[300],
+  fontWeight: 700,
+  fontSize: "14px",
+  letterSpacing: "0.1em",
+  textTransform: "uppercase",
+}));
+
 function HomeBanner() {
   return (
-    <Box
-      sx={
-        {
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          gap: 3,
-          mx: "auto",
-          mt: { xs: 2, md: 4 },
-        } as never
-      }
-    >
-      <Box
-        sx={{
-          flex: 1,
-          minHeight: { xs: 220, md: 320 },
-          borderRadius: "24px",
-          background: "linear-gradient(135deg, #3563E9 0%, #0A196F 100%)",
-          p: { xs: 3, md: 5 },
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          position: "relative",
-          overflow: "hidden",
-          boxShadow: "0 20px 50px rgba(53, 99, 233, 0.25)",
-        } as Record<string, unknown>}
-      >
-        <Box
-          sx={{
-            position: "absolute",
-            right: -40,
-            bottom: -40,
-            width: 200,
-            height: 200,
-            borderRadius: "50%",
-            bgcolor: "rgba(255,255,255,0.08)",
-          }}
-        />
-        <Typography
-          sx={{
-            color: "#fff",
-            fontSize: { xs: "28px", md: "42px" },
-            fontWeight: 800,
-            lineHeight: 1.15,
-            mb: 2,
-            maxWidth: 420,
-          }}
-        >
-          Find, book and rent a car easily
-        </Typography>
-        <Typography
-          sx={{
-            color: "primary.300",
-            fontSize: { xs: "14px", md: "16px" },
-            mb: 3,
-            maxWidth: 380,
-            lineHeight: 1.6,
-          } as Record<string, unknown>}
-        >
+    <BannerRoot>
+      <PrimaryCard>
+        <CardGlow />
+        <HeroTitle>Find, book and rent a car easily</HeroTitle>
+        <HeroSubtitle>
           Discover premium vehicles with 360° views. Filter by type, capacity, and price — all in your browser.
-        </Typography>
+        </HeroSubtitle>
         <Button
           component={Link}
           to="/available-cars"
@@ -77,49 +125,17 @@ function HomeBanner() {
             py: 1.2,
             borderRadius: "12px",
             "&:hover": { bgcolor: "primary.200" },
-          } as Record<string, unknown>}
+          }}
         >
           Browse Cars
         </Button>
-      </Box>
+      </PrimaryCard>
 
-      <Box
-        sx={{
-          flex: 1,
-          minHeight: { xs: 180, md: 320 },
-          borderRadius: "24px",
-          background: "linear-gradient(160deg, #1A37A7 0%, #040815 100%)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
-          overflow: "hidden",
-          boxShadow: "0 20px 50px rgba(10, 25, 111, 0.2)",
-        }}
-      >
-        <DirectionsCarFilledIcon
-          sx={{
-            fontSize: { xs: 120, md: 180 },
-            color: "rgba(255,255,255,0.12)",
-            transform: "rotate(-12deg)",
-          }}
-        />
-        <Typography
-          sx={{
-            position: "absolute",
-            bottom: 24,
-            left: 24,
-            color: "primary.300",
-            fontWeight: 700,
-            fontSize: "14px",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-          } as Record<string, unknown>}
-        >
-          360° Interactive View
-        </Typography>
-      </Box>
-    </Box>
+      <SecondaryCard>
+        <CarIcon />
+        <SecondaryLabel>360° Interactive View</SecondaryLabel>
+      </SecondaryCard>
+    </BannerRoot>
   );
 }
 

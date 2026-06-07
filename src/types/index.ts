@@ -41,6 +41,7 @@ export interface User {
   name: string;
   email: string;
   phone: string;
+  address?: string;
   favoriteProduct: Car[];
   cart?: Cart;
 }
@@ -118,30 +119,6 @@ export interface CompleteProfilePayload {
   name?: string;
   email?: string;
   phone?: string;
-  [key: string]: unknown;
+  address?: string;
 }
 
-declare module "@mui/material/styles" {
-  interface PaletteColor {
-    100?: string;
-    200?: string;
-    300?: string;
-    400?: string;
-    500?: string;
-    600?: string;
-    700?: string;
-    800?: string;
-    900?: string;
-  }
-  interface SimplePaletteColorOptions {
-    100?: string;
-    200?: string;
-    300?: string;
-    400?: string;
-    500?: string;
-    600?: string;
-    700?: string;
-    800?: string;
-    900?: string;
-  }
-}

@@ -1,43 +1,40 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import type { Car } from "../types";
 
 interface CarPriceProps {
   car: Car;
 }
 
+const PriceRow = styled("div")({
+  display: "flex",
+  alignItems: "center",
+});
+
+const MutedText = styled(Typography)({
+  fontSize: "12px",
+  marginTop: "3px",
+  color: "#90A3BF",
+});
+
+const OriginalPrice = styled(Typography)({
+  fontWeight: 500,
+  fontSize: "13px",
+  color: "#90A3BF",
+  textDecoration: "line-through",
+});
+
 function CarPrice({ car }: CarPriceProps) {
   return (
-    <Box>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+    <div>
+      <PriceRow>
         <Typography sx={{ fontWeight: "600" }}>
           ${car.offPrice}/&nbsp;
         </Typography>
-        <Typography
-          sx={{ fontSize: "12px", mt: "3px", color: "secondary.300" }}
-        >
-          Day
-        </Typography>
-      </Box>
-      {car.discount == 0 ? (
-        ""
-      ) : (
-        <Typography
-          sx={{
-            fontWeight: "500",
-            fontSize: "13px",
-            color: "secondary.300",
-            textDecoration: "line-through",
-          }}
-        >
-          ${car.price}
-        </Typography>
-      )}
-    </Box>
+        <MutedText>Day</MutedText>
+      </PriceRow>
+      {car.discount !== 0 && <OriginalPrice>${car.price}</OriginalPrice>}
+    </div>
   );
 }
 

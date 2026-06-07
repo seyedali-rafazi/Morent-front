@@ -77,12 +77,22 @@ function CompleteProfile() {
           />
           <InputField<CompleteProfilePayload>
             errors={errors}
+            placeholder="Phone"
+            name="phone"
+            type="text"
+            register={register}
+            validationSchema={{
+              required: "Phone number is essential",
+            }}
+          />
+          <InputField<CompleteProfilePayload>
+            errors={errors}
             placeholder="Address"
             name="address"
             type="text"
             register={register}
             validationSchema={{
-              required: "address is essentioal",
+              required: "Address is essential",
             }}
           />
           <Button

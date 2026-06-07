@@ -11,15 +11,12 @@ import {
   useScrollTrigger,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import TuneIcon from "@mui/icons-material/Tune";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SearchInput from "./SearchInput";
 import useUser from "../feachers/authentication/useUser";
 import SidebarItems from "./SidebarItems";
-import { useFilter } from "../context/FilterContext";
-
 const drawerWidth = 280;
 
 const navLinks = [
@@ -30,7 +27,6 @@ const navLinks = [
 function Navbar() {
   const { user, cart } = useUser();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { openFilter } = useFilter();
   const navigate = useNavigate();
   const location = useLocation();
   const scrolled = useScrollTrigger({ disableHysteresis: true, threshold: 20 });
@@ -94,21 +90,8 @@ function Navbar() {
                 component="img"
                 src="/photos/logo.svg"
                 alt="MORENT"
-                sx={{ height: { xs: 28, md: 32 } }}
+                sx={{ height: { xs: 32, md: 36 } }}
               />
-              <Typography
-                sx={{
-                  display: { xs: "none", sm: "block" },
-                  fontWeight: 800,
-                  fontSize: { sm: "18px", md: "22px" },
-                  background: "linear-gradient(135deg, #0A196F 0%, #3563E9 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                MORENT
-              </Typography>
             </Box>
 
             <Box
@@ -207,27 +190,9 @@ function Navbar() {
               display: { xs: "flex", md: "none" },
               px: 2,
               pb: 1.5,
-              gap: 1,
             }}
           >
-            <Box sx={{ flex: 1 }}>
-              <SearchInput compact />
-            </Box>
-            <IconButton
-              onClick={() => {
-                if (location.pathname !== "/available-cars") navigate("/available-cars");
-                openFilter();
-              }}
-              sx={{
-                bgcolor: "primary.600",
-                color: "#fff",
-                borderRadius: "12px",
-                "&:hover": { bgcolor: "primary.700" },
-              }}
-              aria-label="open filters"
-            >
-              <TuneIcon />
-            </IconButton>
+            <SearchInput compact />
           </Box>
         </Box>
       </AppBar>

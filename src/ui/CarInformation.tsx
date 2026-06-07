@@ -1,4 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { FaGasPump } from "react-icons/fa6";
 import { TbManualGearbox } from "react-icons/tb";
 import { HiMiniUsers } from "react-icons/hi2";
@@ -8,58 +9,42 @@ interface CarInformationProps {
   car: Car;
 }
 
+const InfoRow = styled("div")({
+  display: "flex",
+  justifyContent: "space-evenly",
+  gap: "5px",
+  alignItems: "center",
+});
+
+const InfoItem = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  color: "#90A3BF",
+  gap: "3px",
+});
+
 function CarInformation({ car }: CarInformationProps) {
   return (
-    <Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          gap: "5px",
-          alignItems: "center",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            color: "secondary.300",
-            gap: "3px",
-          }}
-        >
-          <FaGasPump style={{ fontSize: "17px" }} />
-          <Typography variant="body2" sx={{ fontSize: "13px" }}>
-            {car.gasoline}&nbsp;L/mile
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            color: "secondary.300",
-            gap: "3px",
-          }}
-        >
-          <TbManualGearbox style={{ fontSize: "17px" }} />
-          <Typography variant="body2" sx={{ fontSize: "13px" }}>
-            {car.steering}&nbsp;
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            color: "secondary.300",
-            gap: "3px",
-          }}
-        >
-          <HiMiniUsers style={{ fontSize: "17px" }} />
-          <Typography variant="body2" sx={{ fontSize: "13px" }}>
-            {car.capacity}&nbsp;People
-          </Typography>
-        </Box>
-      </Box>
-    </Box>
+    <InfoRow>
+      <InfoItem>
+        <FaGasPump style={{ fontSize: "17px" }} />
+        <Typography variant="body2" sx={{ fontSize: "13px" }}>
+          {car.gasoline}&nbsp;L/mile
+        </Typography>
+      </InfoItem>
+      <InfoItem>
+        <TbManualGearbox style={{ fontSize: "17px" }} />
+        <Typography variant="body2" sx={{ fontSize: "13px" }}>
+          {car.steering}&nbsp;
+        </Typography>
+      </InfoItem>
+      <InfoItem>
+        <HiMiniUsers style={{ fontSize: "17px" }} />
+        <Typography variant="body2" sx={{ fontSize: "13px" }}>
+          {car.capacity}&nbsp;People
+        </Typography>
+      </InfoItem>
+    </InfoRow>
   );
 }
 
