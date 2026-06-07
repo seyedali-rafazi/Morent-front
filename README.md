@@ -2,7 +2,7 @@
 
 A modern car rental web application built with **React**, **TypeScript**, and **Material UI**. Browse premium vehicles, filter by type and price, view cars in 360° / 3D, manage favourites, build a cart, and complete a rental checkout — all from a responsive, polished UI.
 
-**Live demo:** [morent.liara.run](https://morent.liara.run)
+**Live demo:** [morent-shop.vercel.app](https://morent-shop.vercel.app)
 
 ---
 
