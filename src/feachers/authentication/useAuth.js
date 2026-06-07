@@ -19,7 +19,7 @@ export default function useAuth() {
       });
     },
     onError: (err) => {
-      toast.error(err?.response?.data?.message);
+      toast.error(err?.message || "Something went wrong");
     },
   });
   return { isCreating, createUser, mutateAsync };

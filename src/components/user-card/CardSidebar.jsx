@@ -8,6 +8,11 @@ import {
 } from "../../utils/prices";
 
 function CardSidebar({ cart }) {
+  const items = cart?.productDetail || [];
+  const firstItem = items[0];
+
+  if (!firstItem) return null;
+
   return (
     <Box
       sx={{
@@ -46,13 +51,13 @@ function CardSidebar({ cart }) {
               e.currentTarget.src = "/photos/bmw.webp";
             }}
             style={{ width: "100%" }}
-            src={cart?.productDetail[0].imageLink}
+            src={firstItem.imageLink}
             alt=""
           />
         </Box>
         <Box>
           <Typography variant="h6" sx={{ fontSize: "17px", fontWeight: "600" }}>
-            {cart?.productDetail[0].title} +{" "}
+            {firstItem.title} +{" "}
             <Typography
               sx={{
                 display: "inline-block",
@@ -62,7 +67,7 @@ function CardSidebar({ cart }) {
                 color: "primary.100",
               }}
             >
-              {cart?.productDetail.length}
+              {items.length}
             </Typography>
           </Typography>
           <Box sx={{ display: { xs: "none", lg: "block" } }}>
@@ -90,7 +95,7 @@ function CardSidebar({ cart }) {
             Subtotal
           </Typography>
           <Typography sx={{ fontWeight: "600" }}>
-            ${totalGrossPrice(cart?.productDetail)}
+            ${totalGrossPrice(items)}
           </Typography>
         </Box>
         <Box
@@ -120,7 +125,7 @@ function CardSidebar({ cart }) {
             Discount
           </Typography>
           <Typography sx={{ fontWeight: "600" }}>
-            ${totalOffAmount(cart?.productDetail)}
+            ${totalOffAmount(items)}
           </Typography>
         </Box>
       </Box>
@@ -164,7 +169,7 @@ function CardSidebar({ cart }) {
         </Box>
         <Box>
           <Typography sx={{ fontWeight: "600", fontSize: "20px" }}>
-            ${totalPrice(cart?.productDetail)}
+            ${totalPrice(items)}
           </Typography>
         </Box>
       </Box>

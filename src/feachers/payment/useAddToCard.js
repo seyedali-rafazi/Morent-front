@@ -15,7 +15,7 @@ export default function useAddToCard() {
       });
     },
     onError: (err) => {
-      toast.error(err?.response?.data?.message);
+      toast.error(err?.message || "Something went wrong");
     },
   });
   return { isPending, addCar };

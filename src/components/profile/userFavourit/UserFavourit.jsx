@@ -25,7 +25,7 @@ function UserFavourit() {
 
   return (
     <Box sx={{ p: "15px" }}>
-      {user?.favoriteProduct == 0 ? (
+      {!user?.favoriteProduct?.length ? (
         <EmptyPage
           emptySection="Favoutit List"
           bodyContent="You do not have any favourite car "

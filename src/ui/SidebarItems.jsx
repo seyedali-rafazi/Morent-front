@@ -1,45 +1,41 @@
 import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
-import generateUniqueId from "generate-unique-id";
-import React from "react";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const navItems = [
-  {
-    text: "Home",
-    path: "/",
-  },
-  {
-    text: "Favoutires",
-    path: "/user-profile/user-favourit",
-  },
-  {
-    text: "Orders",
-    path: "/user-profile/user-order",
-  },
+  { text: "Home", path: "/", public: true },
+  { text: "Browse Cars", path: "/available-cars", public: true },
+  { text: "Favourites", path: "/user-profile/user-favourit", public: false },
+  { text: "Orders", path: "/user-profile/user-order", public: false },
+  { text: "Cart", path: "/user-card", public: false },
 ];
 
-function SidebarItems({ user }) {
+function SidebarItems({ user, onNavigate }) {
   const navigate = useNavigate();
 
-  const handelUser = () => {
-    navigate("/auth");
-    toast.error("Login into your page");
+  const handleNav = (item) => {
+    if (!item.public && !user) {
+      navigate("/auth");
+    } else {
+      navigate(item.path);
+    }
+    onNavigate?.();
   };
 
   return (
-    <List>
+    <List sx={{ px: 1, py: 2 }}>
       {navItems.map((item) => (
-        <ListItem key={generateUniqueId()} disablePadding>
-          <ListItemButton sx={{ textAlign: "center" }}>
-            {!user ? (
-              <ListItemText primary={item.text} onClick={handelUser} />
-            ) : (
-              <ListItemText
-                primary={item.text}
-                onClick={() => navigate(item.path)}
-              />
-            )}
+        <ListItem key={item.path} disablePadding sx={{ mb: 0.5 }}>
+          <ListItemButton
+            onClick={() => handleNav(item)}
+            sx={{
+              borderRadius: "12px",
+              "&:hover": { bgcolor: "primary.200" },
+            }}
+          >
+            <ListItemText
+              primary={item.text}
+              primaryTypographyProps={{ fontWeight: 600, fontSize: "15px" }}
+            />
           </ListItemButton>
         </ListItem>
       ))}

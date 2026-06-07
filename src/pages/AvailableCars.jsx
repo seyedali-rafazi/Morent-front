@@ -13,7 +13,7 @@ function AvailableCars() {
     <Box
       sx={{
         bgcolor: "#F3F8FF",
-        minHeight: { xs: "calc(100vh - 64px)", md: "calc(100vh - 74px)" },
+        minHeight: { xs: "calc(100vh - 68px)", md: "calc(100vh - 78px)" },
         maxWidth: "1680px",
         width: "100%",
         display: "flex",
@@ -26,7 +26,7 @@ function AvailableCars() {
           display: "flex",
           width: "100%",
           flexGrow: "1",
-          mt: { xs: "84px", md: "114px" },
+          mt: { xs: 2, md: 3 },
         }}
       >
         <Box

@@ -1,75 +1,27 @@
-import { Box, Button, Drawer, IconButton, Typography } from "@mui/material";
-import React, { Fragment, useState } from "react";
-import Sidebar from "./Sidebar";
-import CloseIcon from "@mui/icons-material/Close";
+import { Box, Button } from "@mui/material";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import { useFilter } from "../../context/FilterContext";
 
 function BootemDropdown() {
-  const [state, setState] = useState({
-    bottom: false,
-  });
-
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState({ ...state, bottom: open });
-  };
-
-  const list = () => <Sidebar />;
+  const { openFilter } = useFilter();
 
   return (
     <Box sx={{ px: "10px", display: { xs: "block", md: "none" } }}>
-        {["Car Fitler"].map((anchor) => (
-          <Fragment key={anchor}>
-            <Button variant="contained" sx={{ color: "primary.100", bgcolor:"primary.600" }} onClick={toggleDrawer(true)}>
-              {anchor}
-            </Button>
-            <Drawer
-              sx={{
-                backdropFilter: "blur(1px)",
-                "& .MuiBackdrop-root": {
-                  backgroundColor: "rgba(0, 0, 0, 0.1)",
-                },
-                "& .MuiDrawer-paper": {
-                  borderTopLeftRadius: "15px",
-                  borderTopRightRadius: "15px",
-                  py: "15px",
-                },
-              }}
-              anchor={"bottom"}
-              open={state["bottom"]}
-              onClose={toggleDrawer(false)}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  width: "100%",
-                  px: "20px",
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontSize: "17px",
-                    fontWeight: "700",
-                  }}
-                >
-                  Car Fitler
-                </Typography>
-                <IconButton onClick={toggleDrawer(false)}>
-                  <CloseIcon />
-                </IconButton>
-              </Box>
-              {list()}
-            </Drawer>
-          </Fragment>
-        ))}
+      <Button
+        variant="contained"
+        startIcon={<FilterListIcon />}
+        onClick={openFilter}
+        sx={{
+          color: "primary.100",
+          bgcolor: "primary.600",
+          borderRadius: "12px",
+          boxShadow: "0 4px 14px rgba(53,99,233,0.35)",
+          textTransform: "none",
+          fontWeight: 600,
+        }}
+      >
+        Filter Cars
+      </Button>
     </Box>
   );
 }

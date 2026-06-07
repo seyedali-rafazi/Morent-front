@@ -24,7 +24,7 @@ function UserOrder() {
     );
   }
 
-  return payments.length == 0 ? (
+  return !payments?.length ? (
     <EmptyPage
       emptySection="User Order List"
       bodyContent="You do not have any Order "
@@ -47,7 +47,7 @@ function UserOrder() {
           }}
         >
           <PaymentInfomation i={i} length={payments.length} />
-          <OrderSwiper products={payment.cart.productDetail} />
+          <OrderSwiper products={payment.cart?.productDetail || []} />
         </Box>
       ))}
     </Box>

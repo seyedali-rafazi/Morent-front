@@ -1,19 +1,22 @@
 import { Box, FormControl, MenuItem, Select, Typography } from "@mui/material";
-import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import SortedCars from "./SortedCars";
 
 function RecentCars() {
-  const [carSort, setCarSort] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
+  const carSort = searchParams.get("sort") || "";
 
   const handleChange = (event) => {
-    let sortValue = event.target.value;
-    setCarSort(sortValue);
-    if (sortValue == "") {
-      searchParams.delete("sort", carSort);
-    }
-    setSearchParams({ sort: sortValue });
+    const sortValue = event.target.value;
+    setSearchParams((prevParams) => {
+      const newParams = new URLSearchParams(prevParams);
+      if (sortValue) {
+        newParams.set("sort", sortValue);
+      } else {
+        newParams.delete("sort");
+      }
+      return newParams;
+    });
   };
 
   return (
@@ -27,21 +30,22 @@ function RecentCars() {
       >
         <Typography
           variant="h6"
-          sx={{ color: "secondary.200", fontSize: "15px" }}
+          sx={{ color: "secondary.200", fontSize: "15px", fontWeight: 700 }}
         >
-          Sorted Car
+          Recommended Cars
         </Typography>
-        <FormControl sx={{ m: 1, minWidth: 220 }}>
+        <FormControl sx={{ m: 1, minWidth: 180 }} size="small">
           <Select
             value={carSort}
             onChange={handleChange}
             displayEmpty
-            inputProps={{ "aria-label": "Without label" }}
+            inputProps={{ "aria-label": "Sort cars" }}
+            sx={{ borderRadius: "10px" }}
           >
             <MenuItem value="">All</MenuItem>
-            <MenuItem value={"latest"}>latest</MenuItem>
-            <MenuItem value={"earliest"}>earliest</MenuItem>
-            <MenuItem value={"popular"}>popular</MenuItem>
+            <MenuItem value="latest">Latest</MenuItem>
+            <MenuItem value="earliest">Earliest</MenuItem>
+            <MenuItem value="popular">Popular</MenuItem>
           </Select>
         </FormControl>
       </Box>

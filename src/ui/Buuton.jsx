@@ -26,7 +26,12 @@ function OrderBuuton({ onClick, children, id }) {
     );
   }
 
-  if (user.cart?.products.map((product) => product.productId).includes(id)) {
+  const cartItems = user?.cart?.productDetail || [];
+  const inCart = cartItems.some(
+    (product) => product._id === id || product.productId === id
+  );
+
+  if (inCart) {
     return (
       <Button
         onClick={() => navigate("/user-card")}

@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import React from "react";
 import { Outlet } from "react-router-dom";
 
 function ProfileLayout({ children }) {
@@ -7,28 +6,40 @@ function ProfileLayout({ children }) {
     <Box
       sx={{
         bgcolor: "#F3F8FF",
-        minHeight: { xs: "calc(100vh - 64px)", md: "calc(100vh - 74px)" },
-        display: "flex",
-        flexDirection: { xs: "column", md: "row" },
-        mt: { xs: "64px", md: "74px" },
+        minHeight: { xs: "calc(100vh - 68px)", md: "calc(100vh - 78px)" },
+        py: { xs: 2, md: 3 },
+        px: { xs: 2, md: 4 },
       }}
     >
       <Box
         sx={{
-          bgcolor: "red",
-          minheight: { xs: "100px", md: "calc(100vh - 74px)" },
-          width: { xs: "100%", md: "20%" },
+          maxWidth: "1400px",
+          mx: "auto",
+          display: "flex",
+          flexDirection: { xs: "column", lg: "row" },
+          gap: { xs: 2, lg: 3 },
+          alignItems: "flex-start",
         }}
       >
-        {children}
-      </Box>
-      <Box
-        sx={{
-          width: { xs: "100%", md: "80%" },
-          minheight: { xs: "calc(100vh - 64px)", md: "calc(100vh - 74px)" },
-        }}
-      >
-        <Outlet />
+        <Box
+          sx={{
+            width: { xs: "100%", lg: "280px" },
+            flexShrink: 0,
+            position: { lg: "sticky" },
+            top: { lg: 96 },
+          }}
+        >
+          {children}
+        </Box>
+        <Box
+          sx={{
+            flex: 1,
+            width: "100%",
+            minWidth: 0,
+          }}
+        >
+          <Outlet />
+        </Box>
       </Box>
     </Box>
   );

@@ -5,7 +5,9 @@ import UserCardInfo from "./UserCardInfo";
 import EmptyPage from "../../ui/EmptyPage";
 
 function CardSection({ cart }) {
-  return cart.productDetail.length == 0 ? (
+  const items = cart?.productDetail || [];
+
+  return items.length === 0 ? (
     <EmptyPage
       buttonContent="Back to menu"
       emptySection="User Payment"
@@ -17,7 +19,7 @@ function CardSection({ cart }) {
       <Box
         sx={{
           bgcolor: "#F3F8FF",
-          minHeight: { xs: "calc(100vh - 64px)", md: "calc(100vh - 74px)" },
+          minHeight: { xs: "calc(100vh - 68px)", md: "calc(100vh - 78px)" },
           maxWidth: "1680px",
           width: "100%",
           display: "flex",
@@ -32,7 +34,7 @@ function CardSection({ cart }) {
             flexDirection: { xs: "column-reverse", md: "row" },
             width: "100%",
             flexGrow: "1",
-            mt: { xs: "84px", md: "114px" },
+            mt: { xs: 2, md: 3 },
           }}
         >
           <Box

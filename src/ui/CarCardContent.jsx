@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
 import LikeCars from "./LikeCars";
 import CarInformation from "./CarInformation";
 import OrderBuuton from "./Buuton";
@@ -14,12 +13,20 @@ function CarCardContent({ car }) {
       sx={{
         display: "flex",
         flexDirection: "column",
-        gap: "10px",
+        gap: "12px",
         width: "100%",
         bgcolor: "primary.100",
         p: "20px",
-        minHeight: "330px",
-        borderRadius: "10px",
+        minHeight: "360px",
+        borderRadius: "16px",
+        border: "1px solid",
+        borderColor: "secondary.100",
+        transition: "all 0.35s cubic-bezier(0.23, 1, 0.32, 1)",
+        "&:hover": {
+          transform: "translateY(-6px)",
+          boxShadow: "0 20px 40px rgba(53, 99, 233, 0.12)",
+          borderColor: "primary.300",
+        },
       }}
     >
       <Box
@@ -38,7 +45,7 @@ function CarCardContent({ car }) {
             sx={{
               fontSize: "12px",
               fontWeight: "600",
-              color: "secondary.200",
+              color: "secondary.300",
             }}
           >
             {car.typecars}
@@ -46,35 +53,44 @@ function CarCardContent({ car }) {
         </Box>
         <LikeCars id={car._id} />
       </Box>
+
       <Box
         sx={{
-          height: "150px",
+          height: "160px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          overflow: "hidden",
+          borderRadius: "12px",
+          bgcolor: "#F3F8FF",
         }}
       >
-        <img
-          role="presentation"
+        <Box
+          component="img"
+          src={car.imageLink}
+          alt={car.title}
           onError={(e) => {
-            e.currentTarget.src = "/photos/bmw.webp";
+            e.currentTarget.src = "/photos/logo.svg";
           }}
-          style={{
+          sx={{
             maxWidth: "100%",
             maxHeight: "100%",
             objectFit: "contain",
-            objectPosition: "center",
+            transition: "transform 0.35s ease",
+            ".MuiBox-root:hover &": {
+              transform: "scale(1.05)",
+            },
           }}
-          src={car.imageLink}
-          alt={car.title}
         />
       </Box>
+
       <CarInformation car={car} />
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          mt: "auto",
         }}
       >
         <CarPrice car={car} />

@@ -12,35 +12,47 @@ import UserFavourit from "./components/profile/userFavourit/UserFavourit";
 import CarRent from "./components/car-rent/CarRent";
 import UserCard from "./pages/UserCard";
 import { FormProvider } from "./context/FormContext";
+import { FilterProvider } from "./context/FilterContext";
 import UserOrder from "./components/profile/UserOrder/UserOrder";
 import UserDashboard from "./components/profile/dashboard/UserDashboard";
 import Footer from "./ui/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import FilterDrawer from "./ui/FilterDrawer";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5,
+      retry: false,
+    },
+  },
+});
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <FormProvider>
-        <Toaster />
-        <Navbar />
-        <ScrollToTop />
-        <Routes>
-          <Route path="/user-profile" element={<UserProfile />}>
-            <Route index element={<Navigate to="dashboard" replace />} />
-            <Route path="dashboard" element={<UserDashboard />} />
-            <Route path="user-order" element={<UserOrder />} />
-            <Route path="user-favourit" element={<UserFavourit />} />
-          </Route>
-          <Route path="/" element={<Home />} />
-          <Route path="/auth" element={<UserAuth />} />
-          <Route path="/Complete-profile" element={<CompleteProfile />} />
-          <Route path="/available-cars" element={<AvailableCars />} />
-          <Route path="/car-rent/:id" element={<CarRent />} />
-          <Route path="/user-card" element={<UserCard />} />
-        </Routes>
-        <Footer />
+        <FilterProvider>
+          <Toaster position="top-right" />
+          <Navbar />
+          <FilterDrawer />
+          <ScrollToTop />
+          <Routes>
+            <Route path="/user-profile" element={<UserProfile />}>
+              <Route index element={<Navigate to="dashboard" replace />} />
+              <Route path="dashboard" element={<UserDashboard />} />
+              <Route path="user-order" element={<UserOrder />} />
+              <Route path="user-favourit" element={<UserFavourit />} />
+            </Route>
+            <Route path="/" element={<Home />} />
+            <Route path="/auth" element={<UserAuth />} />
+            <Route path="/Complete-profile" element={<CompleteProfile />} />
+            <Route path="/available-cars" element={<AvailableCars />} />
+            <Route path="/car-rent/:id" element={<CarRent />} />
+            <Route path="/user-card" element={<UserCard />} />
+          </Routes>
+          <Footer />
+        </FilterProvider>
       </FormProvider>
     </QueryClientProvider>
   );

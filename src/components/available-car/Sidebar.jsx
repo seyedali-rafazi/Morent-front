@@ -1,34 +1,47 @@
-import { Box, Slider, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { Box, Button, Slider, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import CarType from "./CarType";
 import useGetAllCategory from "../../feachers/cars/useGetAllCategory";
 import { useSearchParams } from "react-router-dom";
 
 const capacites = [
-  {
-    _id: 1,
-    title: "2",
-  },
-  {
-    _id: 2,
-    title: "4",
-  },
-  {
-    _id: 3,
-    title: "6",
-  },
+  { _id: 1, title: "2" },
+  { _id: 2, title: "4" },
+  { _id: 3, title: "6" },
 ];
 
-function Sidebar() {
+function Sidebar({ onApply }) {
   const { carGroups } = useGetAllCategory();
-  const [price, setPrice] = useState(250);
   const [searchParams, setSearchParams] = useSearchParams();
+  const maxFromUrl = Number(searchParams.get("offPrice")) || 250;
+  const [price, setPrice] = useState(maxFromUrl);
 
-  const handlePriceChange = (event, newValue) => {
+  useEffect(() => {
+    setPrice(maxFromUrl);
+  }, [maxFromUrl]);
+
+  const handlePriceChange = (_event, newValue) => {
     setPrice(newValue);
-    setSearchParams({ offPrice: newValue });
   };
 
+  const handlePriceCommit = (_event, newValue) => {
+    setSearchParams((prevParams) => {
+      const newParams = new URLSearchParams(prevParams);
+      newParams.set("offPrice", newValue);
+      return newParams;
+    });
+  };
+
+  const handleClearFilters = () => {
+    setSearchParams((prevParams) => {
+      const newParams = new URLSearchParams(prevParams);
+      newParams.delete("carGroup");
+      newParams.delete("capacite");
+      newParams.delete("offPrice");
+      return newParams;
+    });
+    setPrice(250);
+  };
 
   return (
     <Box
@@ -43,7 +56,7 @@ function Sidebar() {
       <Box>
         <Typography
           variant="h3"
-          sx={{ color: "secondary.300", fontSize: "12px", mb: "12px" }}
+          sx={{ color: "secondary.300", fontSize: "12px", mb: "12px", fontWeight: 700, letterSpacing: "0.08em" }}
         >
           TYPE
         </Typography>
@@ -52,7 +65,7 @@ function Sidebar() {
       <Box>
         <Typography
           variant="h3"
-          sx={{ color: "secondary.300", fontSize: "12px", mb: "12px" }}
+          sx={{ color: "secondary.300", fontSize: "12px", mb: "12px", fontWeight: 700, letterSpacing: "0.08em" }}
         >
           CAPACITY
         </Typography>
@@ -65,25 +78,46 @@ function Sidebar() {
       <Box>
         <Typography
           variant="h3"
-          sx={{ color: "secondary.300", fontSize: "12px", mb: "12px" }}
+          sx={{ color: "secondary.300", fontSize: "12px", mb: "12px", fontWeight: 700, letterSpacing: "0.08em" }}
         >
-          CAPACITY
+          PRICE
         </Typography>
         <Slider
           sx={{ color: "primary.600" }}
-          defaultValue={250}
-          aria-label="Default"
+          aria-label="Max price"
           valueLabelDisplay="auto"
-          max={1000}
+          min={20}
+          max={200}
           value={price}
-          onChangeCommitted={handlePriceChange}
+          onChange={handlePriceChange}
+          onChangeCommitted={handlePriceCommit}
         />
         <Typography
           variant="h3"
-          sx={{ color: "secondary.700", fontSize: "16px", mb: "12px" }}
+          sx={{ color: "secondary.700", fontSize: "16px", fontWeight: 600 }}
         >
-          Max. ${price}
+          Max. ${price}.00
         </Typography>
+      </Box>
+      <Box sx={{ display: "flex", gap: 1.5, pb: 2 }}>
+        <Button
+          variant="outlined"
+          fullWidth
+          onClick={handleClearFilters}
+          sx={{ borderColor: "secondary.200", color: "secondary.400" }}
+        >
+          Clear
+        </Button>
+        {onApply && (
+          <Button
+            variant="contained"
+            fullWidth
+            onClick={onApply}
+            sx={{ bgcolor: "primary.600", boxShadow: "0 4px 14px rgba(53,99,233,0.35)" }}
+          >
+            Apply
+          </Button>
+        )}
       </Box>
     </Box>
   );
